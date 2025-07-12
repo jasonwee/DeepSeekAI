@@ -41,4 +41,17 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
+	public PromptsPreferencePresenter getPromptsPreferencePresenter()
+	{
+		PromptsPreferencePresenter presenter = new PromptsPreferencePresenter( getDefault().getPreferenceStore() );
+		return presenter;
+	}
+
+	public ModelListPreferencePresenter getModelsPreferencePresenter()
+	{
+		ModelListPreferencePresenter presenter = new ModelListPreferencePresenter( getDefault().getPreferenceStore() );
+		return presenter;
+	}
+
+
 }
