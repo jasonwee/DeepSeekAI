@@ -2,6 +2,7 @@ package deepseekai;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import ch.weetech.deepseekai.preferences.ModelListPreferencePresenter;
 
 /**
  * The activator class controls the plug-in life cycle
