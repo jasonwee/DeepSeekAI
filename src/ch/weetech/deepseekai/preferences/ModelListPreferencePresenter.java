@@ -1,6 +1,8 @@
 package ch.weetech.deepseekai.preferences;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.eclipse.jface.preference.IPreferenceStore;
 
 public class ModelListPreferencePresenter {
@@ -19,5 +21,12 @@ public class ModelListPreferencePresenter {
         List<ModelApiDescriptor> models =  ModelApiDescriptorUtilities.fromJson( modelsJson );
         return models;
     }
+
+    public Optional<ModelApiDescriptor> getModelAt( int index )
+    {
+        var models = getModels();
+        return index >= 0 && index < models.size() ? Optional.of(models.get( index )) : Optional.empty();
+    }
+
 
 }
