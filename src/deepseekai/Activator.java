@@ -54,5 +54,13 @@ public class Activator extends AbstractUIPlugin {
 		return presenter;
 	}
 
+	public void addModel()
+    {
+        view.clearModelSelection();
+        view.clearModelDetails();
+        view.setDetailsEditable( true );
+    }
+
+
 
 }
