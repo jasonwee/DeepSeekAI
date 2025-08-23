@@ -28,5 +28,12 @@ public class ModelListPreferencePresenter {
         return index >= 0 && index < models.size() ? Optional.of(models.get( index )) : Optional.empty();
     }
 
+    public void addModel()
+    {
+        view.clearModelSelection();
+        view.clearModelDetails();
+        view.setDetailsEditable( true );
+    }
+
 
 }

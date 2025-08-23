@@ -2,63 +2,57 @@ package deepseekai;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
 import ch.weetech.deepseekai.preferences.ModelListPreferencePresenter;
+import ch.weetech.deepseekai.preferences.PromptsPreferencePresenter;
+
 
 /**
  * The activator class controls the plug-in life cycle
  */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "DeepSeekAI"; //$NON-NLS-1$
+    // The plug-in ID
+    public static final String PLUGIN_ID = "DeepSeekAI"; //$NON-NLS-1$
 
-	// The shared instance
-	private static Activator plugin;
-	
-	/**
-	 * The constructor
-	 */
-	public Activator() {
-	}
+    // The shared instance
+    private static Activator plugin;
 
-	@Override
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		plugin = this;
-	}
+    /**
+     * The constructor
+     */
+    public Activator() {
+    }
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		plugin = null;
-		super.stop(context);
-	}
+    @Override
+    public void start(BundleContext context) throws Exception {
+        super.start(context);
+        plugin = this;
+    }
 
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
-	public static Activator getDefault() {
-		return plugin;
-	}
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        plugin = null;
+        super.stop(context);
+    }
 
-	public PromptsPreferencePresenter getPromptsPreferencePresenter()
-	{
-		PromptsPreferencePresenter presenter = new PromptsPreferencePresenter( getDefault().getPreferenceStore() );
-		return presenter;
-	}
+    /**
+     * Returns the shared instance
+     *
+     * @return the shared instance
+     */
+    public static Activator getDefault() {
+        return plugin;
+    }
 
-	public ModelListPreferencePresenter getModelsPreferencePresenter()
-	{
-		ModelListPreferencePresenter presenter = new ModelListPreferencePresenter( getDefault().getPreferenceStore() );
-		return presenter;
-	}
+    public PromptsPreferencePresenter getPromptsPreferencePresenter() {
+        PromptsPreferencePresenter presenter = new PromptsPreferencePresenter(getDefault().getPreferenceStore());
+        return presenter;
+    }
 
-	public void addModel()
-    {
-        view.clearModelSelection();
-        view.clearModelDetails();
-        view.setDetailsEditable( true );
+    public ModelListPreferencePresenter getModelsPreferencePresenter() {
+        ModelListPreferencePresenter presenter = new ModelListPreferencePresenter(getDefault().getPreferenceStore());
+        return presenter;
     }
 
 
