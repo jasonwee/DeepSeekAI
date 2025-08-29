@@ -35,5 +35,17 @@ public class ModelListPreferencePresenter {
         view.setDetailsEditable( true );
     }
 
+    public void removeModel( int selectedIndex )
+    {
+        var models = getModels();
+        if ( selectedIndex >= 0 && selectedIndex < models.size() )
+        {
+            models.remove( selectedIndex );
+            save( models );
+            view.showModels( models );
+            view.clearModelDetails();
+        }
+    }
+
 
 }
