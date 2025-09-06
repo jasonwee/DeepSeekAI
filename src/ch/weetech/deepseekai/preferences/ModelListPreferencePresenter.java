@@ -47,5 +47,10 @@ public class ModelListPreferencePresenter {
         }
     }
 
+    public void save(List<ModelApiDescriptor> models) {
+        String json = ModelApiDescriptorUtilities.toJson(models);
+        preferenceStores.setValue(PreferenceConstants.ASSISTAI_DEFINED_MODELS, json);
+    }
+
 
 }
