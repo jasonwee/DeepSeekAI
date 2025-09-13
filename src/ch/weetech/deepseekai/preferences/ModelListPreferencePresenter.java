@@ -2,6 +2,8 @@ package ch.weetech.deepseekai.preferences;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -50,6 +52,33 @@ public class ModelListPreferencePresenter {
     public void save(List<ModelApiDescriptor> models) {
         String json = ModelApiDescriptorUtilities.toJson(models);
         preferenceStores.setValue(PreferenceConstants.ASSISTAI_DEFINED_MODELS, json);
+    }
+
+    public void saveModel(int selectedIndex, ModelApiDescriptor updatedModelStub) {
+        List<ModelApiDescriptor> storedDescriptors = getModels();
+        String uid;
+        Consumer<ModelApiDescriptor> update;
+        if (selectedIndex >= 0 && selectedIndex < storedDescriptors.size()) {
+            uid = storedDescriptors.get(selectedIndex).uid();
+            update = model -> storedDescriptors.set(selectedIndex, model);
+        } else {
+            uid = UUID.randomUUID().toString();
+            update = model -> storedDescriptors.add(model);
+        }
+        ModelApiDescriptor toStore = new ModelApiDescriptor(
+                uid,
+                updatedModelStub.apiType(),
+                updatedModelStub.apiUrl(),
+                updatedModelStub.apiKey(),
+                updatedModelStub.modelName(),
+                updatedModelStub.temperature(),
+                updatedModelStub.vision(),
+                updatedModelStub.functionCalling()
+         );
+        update.accept(toStore);
+        save(storedDescriptors);
+        view.showModels(getModels());
+        view.clearModelDetails();
     }
 
 
