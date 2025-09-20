@@ -81,5 +81,14 @@ public class ModelListPreferencePresenter {
         view.clearModelDetails();
     }
 
+    public void setSelectedModel(int selectedIndex) {
+        var models = getModels();
+        if (selectedIndex >= 0 && selectedIndex < model.size()) {
+            view.showModelDetails(model.get(selectedIndex));
+        } else {
+            view.clearModelDetails();
+        }
+    }
 
-}
+
+
