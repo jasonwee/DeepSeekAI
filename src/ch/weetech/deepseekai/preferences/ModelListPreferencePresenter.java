@@ -90,5 +90,10 @@ public class ModelListPreferencePresenter {
         }
     }
 
+    public void registerView(ModelListPreferencePage modelListPreferencePage) {
+        view = modelListPreferencePage;
+        view.showModels(getModels());
+    }
 
 
+}
