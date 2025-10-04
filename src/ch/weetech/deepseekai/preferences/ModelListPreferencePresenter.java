@@ -95,5 +95,11 @@ public class ModelListPreferencePresenter {
         view.showModels(getModels());
     }
 
+    public void onPerformDefaults() {
+        preferenceStore.setToDefault(PreferenceConstants.ASSISTAI_DEFINED_MODELS);
+        view.showModels(getModels());
+        view.clearModelDetails();
+    }
+
 
 }
