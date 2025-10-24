@@ -26,4 +26,14 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
     private Button     addButton;
 
     private Button     removeButton;
+
+    @Override
+    public void init(IWorkbench workbench) {
+        presenter = Activator.getDefault().getModelsPreferencePresenter();
+
+        // work around to get UISynchronize as PreferencePage does not seem to
+        // be handled by the eclipse context
+        IEclipseContext eclipseContext = workbench.getService(IEclipseContext.class);
+        uiSync = eclipseContext.get(UISynchronize.class);
+    }
 }
