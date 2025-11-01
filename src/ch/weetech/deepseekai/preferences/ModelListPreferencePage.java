@@ -8,8 +8,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Text;
 
 public class ModelListPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
@@ -88,5 +90,21 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         clearModelDetails();
 
         return sashForm;
+    }
+
+    @Override
+    protected void performApply() {
+        int selectedIndex = modelTable.getSelectionIndex();
+        ModelApiDescriptor updatedModel = new ModelApiDescriptor(
+                "",
+                "deepseek",
+                apiUrl.getText(),
+                apiKey.getText(),
+                modelName.getText(),
+                withTemperature.getSelection(),
+                withVision.getSelection(),
+                withFunctionCalls.getSelection());
+        presenter.saveModel(selectedIndex, updatedModel);
+        super.performApply();
     }
 }
