@@ -107,4 +107,10 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         presenter.saveModel(selectedIndex, updatedModel);
         super.performApply();
     }
+
+    @Override
+    protected void performDefaults() {
+        super.performDefaults();
+        presenter.onPerformDefaults();
+    }
 }
