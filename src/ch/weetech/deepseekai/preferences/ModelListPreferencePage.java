@@ -1,5 +1,6 @@
 package ch.weetech.deepseekai.preferences;
 
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import org.eclipse.swt.SWT;
@@ -112,5 +113,18 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
     protected void performDefaults() {
         super.performDefaults();
         presenter.onPerformDefaults();
+    }
+
+    private void initializeListeners() {
+        modelTable.addSelectionListener((new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Objects.requireNonNull(presenter);
+                int selectedIndex = modelTable.getSelectionIndex();
+                presenter.setSelectedModel(selectedIndex);
+            }
+        });
+        addButton.addListener(SWT.Selection, e -> presenter.addModel());
+        removeButton.addListener(SWT.Selection, e -> presenter.removeModel(modelTable.getSelectionIndex()));
     }
 }
