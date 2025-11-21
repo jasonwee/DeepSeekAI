@@ -5,10 +5,14 @@ import java.util.stream.Stream;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -116,7 +120,7 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
     }
 
     private void initializeListeners() {
-        modelTable.addSelectionListener((new SelectionAdapter() {
+        modelTable.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 Objects.requireNonNull(presenter);
@@ -126,5 +130,21 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         });
         addButton.addListener(SWT.Selection, e -> presenter.addModel());
         removeButton.addListener(SWT.Selection, e -> presenter.removeModel(modelTable.getSelectionIndex()));
+    }
+
+    private Composite createModelDetails(Composite parent) {
+        form = new Group(parent, SWT.Null);
+        form.setText("Model API");
+        FormLayout formLayout = new FormLayout();
+        form.setLayout(formLayout);
+
+        apiUrl = addTextField(form, "API Url:");
+        apiKey = addTextField(form, "API Key:");
+        modelName = addTextField(form, "Model Name:");
+        withVision = addCheckField(form, "With Vision:");
+        withFunctionCalls = addCheckField(form, "With Function Calls:");
+        withTemperature = addScaleField(form, "Temperature");
+
+        return form;
     }
 }
