@@ -158,9 +158,17 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         return scale;
     }
 
-    private Button addTextField(Composite form, String labelText) {
+    private Button addCheckField(Composite form, String labelText) {
         Button button = new Button(form, SWT.CHECK);
         addFormControl(button, form, labelText);
         return button;
     }
+
+    private Button addTextField(Composite form, String labelText) {
+        Text text = new Text(form, SWT.BORDER);
+        addFormControl(text, form, labelText);
+        return text;
+    }
+
+
 }
