@@ -1,12 +1,15 @@
 package ch.weetech.deepseekai.preferences;
 
+import java.awt.Label;
 import java.util.Objects;
+import java.util.ResourceBundle.Control;
 import java.util.stream.Stream;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -164,10 +167,34 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         return button;
     }
 
-    private Button addTextField(Composite form, String labelText) {
+    private Text addTextField(Composite form, String labelText) {
         Text text = new Text(form, SWT.BORDER);
         addFormControl(text, form, labelText);
         return text;
+    }
+
+    private Control addFormControl(Control control, Composite form, String labelText) {
+        Label label = new Label(form, SWT.NONE);
+        label.setText(labelText);
+        FormData labelData = new FormData();
+        Control[] children = form.getChildren();
+        if (children.length == 2) {
+            // First control, so attach it to the top of the form
+            labelData.top = new FormAttachment(0, 10);
+        } else {
+            // Attach it below the last control
+            Control lastControl = children[children.length - 3];
+            labelData.top = new FormAttachment(lastControl, 10);
+        }
+        labelData.left = new FormAttachment(0, 10);
+        label.setLayoutData(labelData);
+
+        FormData textData = new FormData();
+        textData.left = new FormAttachment(0, 150);
+        textData.right = new FormAttachment(100, -10);
+        textData.top = new FormAttachment(label, -2, SWT.TOP);
+        control.setLayoutData(textData);
+        return control;
     }
 
 
