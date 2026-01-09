@@ -1,6 +1,7 @@
 package ch.weetech.deepseekai.preferences;
 
 import java.awt.Label;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle.Control;
 import java.util.stream.Stream;
@@ -195,6 +196,18 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         textData.top = new FormAttachment(label, -2, SWT.TOP);
         control.setLayoutData(textData);
         return control;
+    }
+
+    public void showModels(List<ModelApiDescriptor> models) {
+        uiSync.asyncExec( () -> {
+            modelTable.removeAll();
+            modelTable.clearAll();
+            modelTable.deselectAll();
+            models.stream().forEach(this::addToModelList);
+            Arrays.stream(modelTable.getColumns()).forEach(TableColumn::pack);
+            modelTable.redraw();
+            modelTable.update();
+        });
     }
 
 
