@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
 public class ModelListPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
@@ -208,6 +209,12 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
             modelTable.redraw();
             modelTable.update();
         });
+    }
+
+    public void addToModelList(ModelApiDescriptor item) {
+        TableItem tableItem = new TableItem(modelTable, SWT.NULL);
+        tableItem.setText(0, item.apiUrl());
+        tableItem.setText(1, item.modelName());
     }
 
 
