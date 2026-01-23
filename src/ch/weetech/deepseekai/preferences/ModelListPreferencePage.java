@@ -217,5 +217,17 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         tableItem.setText(1, item.modelName());
     }
 
+    public void showModelDetails(ModelApiDescriptor modelApiDescriptor) {
+        uiSync.asyncExec( () -> {
+            apiUrl.setText(modelApiDescriptor.apiUrl());
+            apiKey.setText(modelApiDescriptor.apiKey());
+            modelName.setText(modelApiDescriptor.modelName());
+            withTemperature.setSelection(modelApiDescriptor.temperature());
+            withVision.setSelection(modelApiDescriptor.vision());
+            withFunctionCalls.setSelection(modelApiDescriptor.functionCalling());
+        });
+        setDetailEditable(true);
+    }
+
 
 }
