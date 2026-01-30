@@ -229,5 +229,17 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         setDetailEditable(true);
     }
 
+    public void clearModelDetails() {
+        uiSync.asyncExec(() -> {
+            apiUrl.setText("");
+            apiKey.setText("");
+            modelName.setText("");
+            withTemperature.setSelect(0);
+            withVision.setSelection(false);
+            withFunctionCalls.setSelection(false);
+        });
+        setDetailsEditable(false);
+    }
+
 
 }
