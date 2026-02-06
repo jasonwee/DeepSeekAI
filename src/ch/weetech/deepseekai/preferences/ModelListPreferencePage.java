@@ -1,6 +1,7 @@
 package ch.weetech.deepseekai.preferences;
 
 import java.awt.Label;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle.Control;
@@ -239,6 +240,17 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
             withFunctionCalls.setSelection(false);
         });
         setDetailsEditable(false);
+    }
+
+    public void setDetailsEditable(boolean editable) {
+        uiSync.asyncExec(() -> {
+            Arrays.stream(form.getChildren()).forEach(control->control.setEnabled(editable));
+            if (editable) {
+                apiUrl.forceFocus();
+                form.redraw();
+                form.update();
+            }
+        });
     }
 
 
