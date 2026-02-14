@@ -253,5 +253,10 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
         });
     }
 
+    public void clearModelSelection() {
+        uiSync.asyncExec(() -> {
+            modelTable.deselectAll();
+        });
+    }
 
 }
