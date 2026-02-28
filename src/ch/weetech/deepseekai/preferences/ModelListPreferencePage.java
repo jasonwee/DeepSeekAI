@@ -7,6 +7,8 @@ import java.util.Objects;
 import java.util.ResourceBundle.Control;
 import java.util.stream.Stream;
 
+// require Eclipse e4 Tools, can be install inside eclipse install new software
+import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.SelectionAdapter;
