@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 // require Eclipse e4 Tools, can be install inside eclipse install new software
 import org.eclipse.e4.ui.di.UISynchronize;
+import org.eclipse.jface.preference.PreferencePage;
 // require Eclipse SWT Tools
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
@@ -26,6 +27,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
 
 public class ModelListPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
