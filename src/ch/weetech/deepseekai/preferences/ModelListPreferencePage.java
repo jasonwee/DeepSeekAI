@@ -30,6 +30,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
+import ch.weetech.deepseekai.Activator;
+import ch.weetech.deepseekai.model.ModelApiDescriptor;
+
 public class ModelListPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
     // inject
