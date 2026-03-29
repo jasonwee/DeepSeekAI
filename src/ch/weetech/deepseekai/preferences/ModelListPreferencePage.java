@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.ResourceBundle.Control;
 import java.util.stream.Stream;
 
+import org.eclipse.e4.core.contexts.IEclipseContext;
 // require Eclipse e4 Tools, can be install inside eclipse install new software
 import org.eclipse.e4.ui.di.UISynchronize;
 import org.eclipse.jface.preference.PreferencePage;

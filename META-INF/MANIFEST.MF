@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: deepseekai.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.console;bundle-version="3.14.100"
+ org.eclipse.ui.console;bundle-version="3.14.100",
+ org.eclipse.e4.core.contexts;bundle-version="1.13.100"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: DeepSeekAI
 Bundle-ActivationPolicy: lazy
