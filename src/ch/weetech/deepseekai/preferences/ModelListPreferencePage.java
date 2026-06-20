@@ -1,10 +1,8 @@
 package ch.weetech.deepseekai.preferences;
 
-import java.awt.Label;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.ResourceBundle.Control;
 import java.util.stream.Stream;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
@@ -16,6 +14,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.layout.GridData;
@@ -24,6 +23,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Scale;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
@@ -150,7 +150,7 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
     }
 
     private Composite createModelDetails(Composite parent) {
-        form = new Group(parent, SWT.Null);
+        form = new Group(parent, SWT.NULL);
         form.setText("Model API");
         FormLayout formLayout = new FormLayout();
         form.setLayout(formLayout);
@@ -246,7 +246,7 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
             apiUrl.setText("");
             apiKey.setText("");
             modelName.setText("");
-            withTemperature.setSelect(0);
+            withTemperature.setSelection(0);
             withVision.setSelection(false);
             withFunctionCalls.setSelection(false);
         });
