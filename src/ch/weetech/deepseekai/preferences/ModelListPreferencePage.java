@@ -238,7 +238,7 @@ public class ModelListPreferencePage extends PreferencePage implements IWorkbenc
             withVision.setSelection(modelApiDescriptor.vision());
             withFunctionCalls.setSelection(modelApiDescriptor.functionCalling());
         });
-        setDetailEditable(true);
+        setDetailsEditable(true);
     }
 
     public void clearModelDetails() {
