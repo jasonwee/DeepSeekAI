@@ -7,6 +7,8 @@ import java.util.function.Consumer;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 
+import ch.weetech.deepseekai.model.ModelApiDescriptor;
+
 public class ModelListPreferencePresenter {
 
     private final IPreferenceStore preferenceStore;
@@ -19,7 +21,7 @@ public class ModelListPreferencePresenter {
 
     public List<ModelApiDescriptor> getModels()
     {
-        String modelsJson = preferenceStore.getString(PreferenceConstants.ASSISTAI_DEFINED_MODELS);
+        String modelsJson = preferenceStore.getString(PreferenceConstants.DEEPSEEKAI_DEFINED_MODELS);
         List<ModelApiDescriptor> models =  ModelApiDescriptorUtilities.fromJson( modelsJson );
         return models;
     }
@@ -51,7 +53,7 @@ public class ModelListPreferencePresenter {
 
     public void save(List<ModelApiDescriptor> models) {
         String json = ModelApiDescriptorUtilities.toJson(models);
-        preferenceStores.setValue(PreferenceConstants.ASSISTAI_DEFINED_MODELS, json);
+        preferenceStore.setValue(PreferenceConstants.DEEPSEEKAI_DEFINED_MODELS, json);
     }
 
     public void saveModel(int selectedIndex, ModelApiDescriptor updatedModelStub) {
@@ -83,8 +85,8 @@ public class ModelListPreferencePresenter {
 
     public void setSelectedModel(int selectedIndex) {
         var models = getModels();
-        if (selectedIndex >= 0 && selectedIndex < model.size()) {
-            view.showModelDetails(model.get(selectedIndex));
+        if (selectedIndex >= 0 && selectedIndex < models.size()) {
+            view.showModelDetails(models.get(selectedIndex));
         } else {
             view.clearModelDetails();
         }
@@ -96,7 +98,7 @@ public class ModelListPreferencePresenter {
     }
 
     public void onPerformDefaults() {
-        preferenceStore.setToDefault(PreferenceConstants.ASSISTAI_DEFINED_MODELS);
+        preferenceStore.setToDefault(PreferenceConstants.DEEPSEEKAI_DEFINED_MODELS);
         view.showModels(getModels());
         view.clearModelDetails();
     }
