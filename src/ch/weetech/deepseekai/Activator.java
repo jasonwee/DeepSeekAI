@@ -1,4 +1,4 @@
-package deepseekai;
+package ch.weetech.deepseekai;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -13,16 +13,19 @@ import ch.weetech.deepseekai.preferences.PromptsPreferencePresenter;
 public class Activator extends AbstractUIPlugin {
 
     // The plug-in ID
-    public static final String PLUGIN_ID = "DeepSeekAI"; //$NON-NLS-1$
+    //public static final String PLUGIN_ID = "DeepSeekAI"; //$NON-NLS-1$
 
     // The shared instance
-    private static Activator plugin;
+    private static Activator plugin = null;
 
     /**
      * The constructor
      */
+    /*
     public Activator() {
     }
+    */
+    
 
     @Override
     public void start(BundleContext context) throws Exception {
@@ -30,11 +33,13 @@ public class Activator extends AbstractUIPlugin {
         plugin = this;
     }
 
+    /*
     @Override
     public void stop(BundleContext context) throws Exception {
         plugin = null;
         super.stop(context);
     }
+    */
 
     /**
      * Returns the shared instance
