@@ -3,7 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: DeepSeekAI
 Bundle-SymbolicName: DeepSeekAI;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: deepseekai.Activator
+Bundle-Activator: ch.weetech.deepseekai.Activator
+Bundle-ClassPath: lib/jackson-annotations-2.15.0-rc1.jar,
+ lib/jackson-core-2.15.0-rc1.jar,
+ lib/jackson-databind-2.15.0-rc1.jar,
+ .
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.console;bundle-version="3.14.100",
