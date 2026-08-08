@@ -3,59 +3,40 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.commands">
-      <category
-            id="DeepSeekAI.commands.category"
-            name="Sample Category">
-      </category>
-      <command
-            categoryId="DeepSeekAI.commands.category"
-            name="Sample Command"
-            id="DeepSeekAI.commands.sampleCommand">
-      </command>
+         id="ch.weetech.deepseekai"
+         point="org.eclipse.e4.workbench.model">
+         <fragment
+               apply="always"
+               uri="fragment.e4xmi">
+         </fragment>
    </extension>
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="deepseekai.handlers.SampleHandler"
-            commandId="DeepSeekAI.commands.sampleCommand">
-      </handler>
+         point="org.eclipse.ui.preferencePages">
+         <page
+         id="ch.weetech.deepseekai.preferences.OpenAIPreferencePage"
+         class="ch.weetech.deepseekai.preferences.ModelPreferencePage"
+         name="DeepSeekAI"
+         >
+         </page>
+         <page
+               id="ch.weetech.deepseekai.preferences.PromptsPreferencePage"
+               class="ch.weetech.deepseekai.preferences.PromptsPreferencePage"
+               category="ch.weetech.deepseekai.preferences.OpenAIPreferencePage"
+               name="Prompts">
+         </page>
+         <page
+               id="ch.weetech.deepseekai.preferences.ModelListPreferencePage"
+               class="ch.weetech.deepseekai.preferences.ModelListPreferencePage"
+               category="ch.weetech.deepseekai.preferences.OpenAIPreferencePage"
+               name="Models"
+               >
+         </page>
    </extension>
    <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="DeepSeekAI.commands.sampleCommand"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            contextId="org.eclipse.ui.contexts.window"
-            sequence="M1+6">
-      </key>
+         point="org.eclipse.core.runtime.preferences">
+         <initializer
+               class="ch.weetech.deepseekai.preferences.PreferenceInitializer">
+         </initializer>
    </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               id="DeepSeekAI.menus.sampleMenu"
-               label="Sample Menu"
-               mnemonic="M">
-            <command
-                  commandId="DeepSeekAI.commands.sampleCommand"
-                  id="DeepSeekAI.menus.sampleCommand"
-                  mnemonic="S">
-            </command>
-         </menu>
-      </menuContribution>
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="DeepSeekAI.toolbars.sampleToolbar">
-            <command
-                  id="DeepSeekAI.toolbars.sampleCommand"
-                  commandId="DeepSeekAI.commands.sampleCommand"
-                  icon="icons/sample.png"
-                  tooltip="Say hello world">
-            </command>
-         </toolbar>
-      </menuContribution>
-   </extension>
+  
 </plugin>
